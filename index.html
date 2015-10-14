@@ -15,7 +15,7 @@
 
 		<form id="info" ng-controller="MapDisplayController as vm">
 			<input ng-model="vm.address" type="text">
-			<button ng-click="vm.searchZip(vm.address)">Find Zip Code</button>
+			<button ng-click="vm.searchZip(vm.address)">+</button>
 
 			<div id="zips">
 				<div ng-repeat="zip in vm.listOfZips">
@@ -24,8 +24,8 @@
 			</div>
 
 			<div id="zipping">
-				<input ng-click="vm.addToGroup()" type="button" value="Add To Group" >
-				<input ng-click="vm.remove()" type="button" value="Remove Selected" >
+				<input ng-click="vm.addToGroup()" type="button" value="Add To Group">
+				<input ng-click="vm.remove()" type="button" value="Remove Selected">
 			</div>
 
 		</form>

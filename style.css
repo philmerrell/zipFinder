@@ -34,7 +34,7 @@ html, body {
 	width: 70%;
 }
 
-#info input[type="button"] {
+button {
 	background-color: white;
 	border: 0;
 	font-size: 100%;

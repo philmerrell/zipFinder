@@ -35,9 +35,7 @@
 
 		function searchZip(address) {
 
-			var abc =0;
-
-			geocoder.geocode({'address': address}, function(results, status) {
+			geocoder.geocode({'address': address + ' US'}, function(results, status) {
 				if (status === google.maps.GeocoderStatus.OK) {
 
 					$window.setCenter(results[0].geometry.location);
@@ -48,23 +46,16 @@
 						title: address
 					});
 
-					abc = google.maps.GeocoderStatus.OK
-					console.log(abc);
-					// vm.listOfMarkers.push(marker);
 					listOfZips.push(address);
-					// console.log('service ' + listOfZips);
 
 				} else {
 					alert('Geocode was not successful for the following reason: ' + status);
 				}
 			});
-
-			return abc;
 		}
 
 
 		function getZips() {
-			// console.log(listOfZips);
 			return listOfZips;
 		}
 	};
