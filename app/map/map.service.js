@@ -1,6 +1,6 @@
 (function(){
-	
-	'use strict'
+
+	'use strict';
 
 	angular
 		.module('Map')
@@ -22,19 +22,20 @@
 		// ----------------------------------------------------------
 
 		function initMap() {
-  		$window = new google.maps.Map(document.getElementById('map'), {
-    		center: {lat: 45, lng: -114},
-    		zoom: 6
-  		});
+			$window = new google.maps.Map(document.getElementById('map'), {
+				center: {lat: 45, lng: -114},
+				zoom: 6
+			});
 
-  		geocoder = new google.maps.Geocoder();
+			geocoder = new google.maps.Geocoder();
 		}
 
 
 		function searchZip(address) {
+			// Set up our promise so we can handle async data elegantly
 			var defer = $q.defer();
 
-			return geocoder.geocode({'address': address + ' US'}, function(results, status) {
+			geocoder.geocode({'address': address + ' US'}, function(results, status) {
 				if (status === google.maps.GeocoderStatus.OK) {
 
 					$window.setCenter(results[0].geometry.location);
@@ -45,17 +46,22 @@
 						title: address
 					});
 
+					// once we have status back we can send the data back, aka, 'resolve' the promise
 					defer.resolve(status);
 
-					return defer.promise;
+
 				} else {
-					alert('Geocode was not successful for the following reason: ' + status);
-					return false;
+					// if Something bad happens with the Google API Call we can reject the promise and 'catch' the rejection.
+					defer.reject(status);
 				}
+
 			});
+
+			// We can return this immediately because we are 'promising' the caller of this function a result at some point
+			return defer.promise;
 
 		}
 
-	};
+	}
 
 })();
