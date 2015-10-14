@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html ng-app="Map">
+  <head>
+    <link rel="stylesheet" href="style.css">
+
+    <script src="angular.min.js"></script>
+    <script src="app/map/map.module.js"></script>
+    <script src="app/map/map.service.js"></script>
+    <script src="app/map/map.controller.js"></script>
+
+
+  </head>
+
+  <body>
+
+		<form id="info" ng-controller="MapDisplayController as vm">
+			<input ng-model="vm.address" type="text">
+			<button ng-click="vm.searchZip(vm.address)">Find Zip Code</button>
+
+			<div id="zips">
+				<div ng-repeat="zip in vm.listOfZips">
+					<label><input type="checkbox" name="check" value="{{zip}}"> <span>{{zip}}</span> <br /></label>
+				</div>
+			</div>
+
+			<div id="zipping">
+				<input ng-click="vm.addToGroup()" type="button" value="Add To Group" >
+				<input ng-click="vm.remove()" type="button" value="Remove Selected" >
+			</div>
+
+		</form>
+
+    <div id="map"></div>
+
+		<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA1RPLIbOPLFJb8DtjcwtxjTouQsr5gV_0&callback=initMap"></script>
+  </body>
+</html>

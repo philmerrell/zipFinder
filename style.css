@@ -1,0 +1,80 @@
+html, body { 
+	font-size: 100%;
+	font-weight: bold;
+	height: 100%; 
+	width: 100%; 
+	margin: 0; 
+	padding: 0;
+}
+
+#info {
+	background-color:#696969;
+	border-left: 2px solid black;
+	float: right;
+	height: 100%;
+	width: 20%;
+}
+
+#map {
+	height: 100%;
+	margin-right: 20%;
+	width: auto;
+}
+
+#info input[type="text"] {
+	background-color: #FF6600;
+	border: 1px solid black;
+	color: #000000;
+	font-size: 100%;
+	font-weight: bold;
+	height: 30px;
+	margin-left: 5%;
+	margin-top: 5%;
+	text-align: center;
+	width: 70%;
+}
+
+#info input[type="button"] {
+	background-color: white;
+	border: 0;
+	font-size: 100%;
+	font-weight: bold; 
+	height: 30px;
+	text-align: center;
+	width: 20%;
+}
+
+#zips {
+	background-color: #FF6600;
+	border: 1px solid black;
+	height: 30%;
+	margin-left: 5%;
+	margin-top: 10%;
+	overflow: auto;
+	width: 91.5%;
+
+}
+
+
+input[type="checkbox"]{
+	appearance: none;
+	border-radius: 1px;
+	position: relative;
+	width: 30px;
+	height: 30px;
+	border-width: 0;
+}
+
+label {
+    display: block;
+    padding-left: 15px;
+    text-indent: -15px;
+}
+
+/*input[type="checkbox"]:checked{
+	background-color: #2ECC71;
+}
+input[type="checkbox"]:focus{
+	outline: 0 none;
+	box-shadow: none;
+}*/
