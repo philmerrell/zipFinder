@@ -21,10 +21,10 @@
 		vm.searchZip = searchZip;
 
 		function searchZip(address) {
-			MapService.searchZip(address);
-			vm.listOfZips = MapService.getZips();
-
-
+			MapService.searchZip(address).then(function(result) {
+				console.log(result);
+			});
+			vm.listOfZips.push(address);
 		}
 
 	};

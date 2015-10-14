@@ -7,16 +7,14 @@
 		.factory('MapService', MapService)
 	;
 
-	function MapService($window) {
+	function MapService($window, $q) {
 
 		$window.initMap = initMap;
 
 		var geocoder;
-		var listOfZips = [];
 
 		var service = {
-			getZips							: 				getZips,
-			searchZip						:					searchZip
+			searchZip			:			searchZip
 		};
 
 		return service;
@@ -34,8 +32,9 @@
 
 
 		function searchZip(address) {
+			var defer = $q.defer();
 
-			geocoder.geocode({'address': address + ' US'}, function(results, status) {
+			return geocoder.geocode({'address': address + ' US'}, function(results, status) {
 				if (status === google.maps.GeocoderStatus.OK) {
 
 					$window.setCenter(results[0].geometry.location);
@@ -46,18 +45,17 @@
 						title: address
 					});
 
-					listOfZips.push(address);
+					defer.resolve(status);
 
+					return defer.promise;
 				} else {
 					alert('Geocode was not successful for the following reason: ' + status);
+					return false;
 				}
 			});
+
 		}
 
-
-		function getZips() {
-			return listOfZips;
-		}
 	};
 
 })();
